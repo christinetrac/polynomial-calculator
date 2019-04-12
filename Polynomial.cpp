@@ -17,12 +17,6 @@ int main(){
 	poly_t poly1{nullptr, 0};
 	init_poly(poly1,array1,2);
 
-//	poly_multiply(poly1,poly2);
-
-//	poly_divide(poly1, 5);
-
-//	poly_diff(poly2);
-
 	poly_approx_int(poly1, 1, 4, 2);
 	std::cout << poly_approx_int(poly1, 1, 4, 2) << std::endl;
 
@@ -101,7 +95,6 @@ void poly_add(poly_t &p, poly_t const &q){
 	    		}else{
 	    			p.a_coeffs[i] = temp[i];
 	    		}
-//	    		std::cout << p.a_coeffs[i] << std::endl;
 	    	}
 	    }
 	    else{
@@ -113,7 +106,6 @@ void poly_add(poly_t &p, poly_t const &q){
 	    		}else{
 	    			p.a_coeffs[i] = q.a_coeffs[i];
 	    		}
-//	    		std::cout << p.a_coeffs[i] << std::endl;
 	    	}
 	    }
 	}
@@ -140,7 +132,6 @@ void poly_subtract( poly_t &p, poly_t const &q ){
 		    	 }else{
 		    	    p.a_coeffs[i] = temp[i];
 		    	 }
-//		    	 std::cout << p.a_coeffs[i] << std::endl;
 		    }
 		 }
 		 else{
@@ -153,9 +144,8 @@ void poly_subtract( poly_t &p, poly_t const &q ){
 		    	    }else{
 		    	    	p.a_coeffs[i] = -q.a_coeffs[i];
 		    	    }
-//		    	    std::cout << p.a_coeffs[i] << std::endl;
 		    	   }
-		   	   }
+		   	 }
 		}
 }
 
@@ -185,9 +175,6 @@ void poly_multiply( poly_t &p, poly_t const &q ){
 
 		p.degree = p.degree + q.degree;
 
-//		for(unsigned int m = 0; m<(p.degree+q.degree+1); ++m){
-//			std::cout << p.a_coeffs[m] << std::endl;
-//		}
 	}
 }
 
@@ -222,13 +209,6 @@ double poly_divide( poly_t &p, double r ){
 
 		p.degree = p.degree - 1;
 
-//		for(unsigned int m = 0; m<(p.degree+1); ++m){
-//			std::cout << p.a_coeffs[m] << std::endl;
-//		}
-
-//		std::cout << std::endl;
-//		std::cout << remainder << std::endl;
-
 		return remainder;
 	}
 }
@@ -254,10 +234,6 @@ void poly_diff( poly_t &p ){
 
 		p.degree = p.degree - 1;
 	}
-
-//		for(unsigned int m = 0; m<(p.degree+1); ++m){
-//			std::cout << p.a_coeffs[m] << std::endl;
-//		}
 }
 
 double poly_approx_int( poly_t const &p, double a, double b, unsigned int n ){
@@ -285,28 +261,3 @@ double poly_approx_int( poly_t const &p, double a, double b, unsigned int n ){
 		return area;
 	}
 }
-
-/*double poly_approx_int( poly_t const &p, double a, double b, unsigned int n ){
-	double half_h = ((b-a)/n)/2;
-	double sum = 0.0;
-
-	if(p.a_coeffs == nullptr){
-		throw 0;
-	}
-	else{
-		double value = p.a_coeffs[p.degree];
-		double x = b;
-		for (unsigned int i = p.degree; i>0; --i){
-			value = (value*x) + p.a_coeffs[i-1];
-			if(x==b || x==a){
-				sum += value;
-			} else{
-				sum += (2*value);
-			}
-			--x;
-		}
-		double area = half_h*sum;
-//		std::cout << area << std::endl;
-		return area;
-	}
-} */
